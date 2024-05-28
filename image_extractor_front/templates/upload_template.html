@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractor de imagenes</title>
+</head>
+<body>
+    <center>
+        <section>
+            <h1>Bienvenido al extractor de imagenes de PDFs</h1>
+            <form enctype="multipart/form-data" method="POST" >
+                {% csrf_token %}
+                <input type="file" name="file" id="file">
+                <button type="submit">Enviar PDF</button>
+            </form>
+        </section>
+        <div class="section">
+            <h1>Imagenes encontradas</h1>
+        </div>
+    </center>
+</body>
+</html>
