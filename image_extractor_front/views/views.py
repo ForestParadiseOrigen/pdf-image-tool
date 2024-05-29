@@ -15,7 +15,7 @@ def upload_view(request):
     def save_new_file(request):
         uploaded_file = request.FILES["file"]
         if uploaded_file:
-            uploaded_file_name = default_storage.save(os.path.join('uploads', 'temp', uploaded_file.name), uploaded_file)
+            uploaded_file_name = default_storage.save(os.path.join( uploaded_file.name), uploaded_file)
             uploaded_file_url = default_storage.url(uploaded_file_name)
             
             extracted_images = extract_images_from_pdf(uploaded_file_url)
