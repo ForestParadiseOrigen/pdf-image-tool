@@ -26,32 +26,3 @@ def upload_view(request):
         form = UploadForm()
         
     return render(request, "upload_template.html", {"form": form})
-
-
-''' 
-    # Sección: En caso de que nuestro código funcione correctamente hay que eliminar este bloque de comentarios.
-    # Explicación: Se encarga de guardar los archivos que llegan por mediod del request.
-    def save_new_file(request):
-        uploaded_file = request.FILES["file"]
-        if uploaded_file:
-            uploaded_file_name = default_storage.save(os.path.join( uploaded_file.name), uploaded_file)
-            uploaded_file_url = default_storage.url(uploaded_file_name)
-            
-            extracted_images = extract_images_from_pdf(uploaded_file_url)
-            
-            return JsonResponse({"file_url": uploaded_file_url, "extracted_images": extracted_images})
-        else:
-            return JsonResponse({"error": "No se encontró ningún archivo para guardar."}, status=400)
-
-    # Explicación: Se encarga de borrar los archivos guardados que se le especifiquen.
-    def del_new_file(request):
-        uploaded_file = request.FILES.get("file")
-        if uploaded_file:
-            uploaded_file_name = default_storage.delete(uploaded_file.name)
-            if uploaded_file_name:
-                print(f"El archivo {uploaded_file_name} fue eliminado.")
-            else:
-                print("Error al eliminar el archivo.")
-        else:
-            print("No se encontró ningún archivo para eliminar.")
-'''
