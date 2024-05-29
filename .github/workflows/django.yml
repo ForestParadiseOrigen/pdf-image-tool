@@ -8,27 +8,36 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.11]
-
     steps:
     - uses: actions/checkout@v4
+
+    - name: Grant execute permissions
+      run: |
+        chmod +x env/bin/activate
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Virtual Enviroment
+
+    - name: Create virtual environment
       run: |
-        virtualenv env -p python3 ./
-        env\Scripts\activate
-    - name: Install Dependencies
+        python -m venv env
+
+    - name: Activate virtual environment
+      run: |
+        source env/bin/activate
+
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run Tests
+
+    - name: Run tests
       run: |
-        python manage.py runserver
+        python manage.py test  # Or the appropriate test command for your project
