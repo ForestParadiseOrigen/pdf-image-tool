@@ -16,10 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Grant execute permissions
-      run: |
-        chmod +x env/bin/activate
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -27,7 +23,11 @@ jobs:
 
     - name: Create virtual environment "env"
       run: |
-        python -m venv env
+            python -m venv env
+    
+    - name: Grant execute permissions
+      run: |
+        chmod +x env/bin/activate
 
     - name: Activate virtual environment
       run: |
