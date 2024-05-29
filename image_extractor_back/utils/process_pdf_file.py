@@ -1,7 +1,8 @@
-import fitz  # PyMuPDF
 import os
-from django.core.files.storage import default_storage
+import fitz
 from django.conf import settings
+
+from image_extractor_back.utils.del_new_file import del_new_file
 
 def extract_images_from_pdf(uploaded_file_url):
     

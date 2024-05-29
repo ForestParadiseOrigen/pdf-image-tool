@@ -4,8 +4,6 @@ from django.views.decorators.csrf import csrf_exempt
 from ..forms.upload_form import UploadForm
 
 from image_extractor_back.utils.save_new_file import save_new_file
-from image_extractor_back.utils.process_pdf_file import extract_images_from_pdf
-from image_extractor_back.utils.del_new_file import del_new_file
 
 @csrf_exempt
 def upload_view(request):
