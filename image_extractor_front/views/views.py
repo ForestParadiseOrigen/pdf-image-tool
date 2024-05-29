@@ -1,13 +1,8 @@
-import os
-
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.core.files.storage import default_storage
 
 from ..forms.upload_form import UploadForm
 
-from image_extractor import settings
 from image_extractor_back.utils.save_new_file import save_new_file
 from image_extractor_back.utils.process_pdf_file import extract_images_from_pdf
 from image_extractor_back.utils.del_new_file import del_new_file
