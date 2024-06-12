@@ -29,7 +29,7 @@ def extract_images_from_pdf(uploaded_file_url):
             
             # Crear un nombre de archivo único para cada imagen
             image_filename = f"image_page{page_number+1}_img{img_index+1}.png"
-            image_filepath = os.path.join(settings.MEDIA_ROOT, 'temp', image_filename)
+            image_filepath = os.path.join(settings.MEDIA_ROOT, image_filename)
 
             # Guardar la imagen en el sistema de archivos
             with open(image_filepath, "wb") as image_file:

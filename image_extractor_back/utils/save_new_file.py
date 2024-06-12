@@ -1,6 +1,7 @@
 import os
 from django.http import JsonResponse
 from image_extractor_back.utils.process_pdf_file import extract_images_from_pdf
+from image_extractor_back.utils.del_new_file import del_new_file
 from django.core.files.storage import default_storage
 
 # Explicación: Se encarga de guardar los archivos que llegan por mediod del request.
@@ -20,8 +21,11 @@ def save_new_file(request):
         
         # Procede a guardar las imagenes extraidas del archivo cuya ruta se le asignó como parametro.
         extracted_images = extract_images_from_pdf(uploaded_file_url)
-        
-        # Muestra en el navegador la ruta del archivo que se subió y las rutas de las imagenes que se extragieron a su vez del mismo.
-        return JsonResponse({"file_url": uploaded_file_url, "extracted_images": extracted_images})
+    
     else:
-        return JsonResponse({"error": "No se encontró ningún archivo para guardar."}, status=400)
+        print("error: No se encontró ningún archivo para guardar.")
+    
+    clean_all = del_new_file(uploaded_file, extracted_images)
+    extracted = {"file_url": uploaded_file_url, "extracted_images": extracted_images, "has_deleted": clean_all}
+    
+    return JsonResponse(extracted, status=400)

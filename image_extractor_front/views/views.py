@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from ..forms.upload_form import UploadForm
 
 from image_extractor_back.utils.save_new_file import save_new_file
+# from image_extractor_back.utils.del_new_file import del_new_file
 
 @csrf_exempt
 def upload_view(request):
@@ -24,3 +25,10 @@ def upload_view(request):
         form = UploadForm()
         
     return render(request, "upload_template.html", {"form": form})
+
+def deliver_files_view():
+    # Explicación: Por medio de esta sección se van a mostrar todos los archivos que están almacenados en la carpeta uploads.
+    return render("")
+
+
+# Pendiente: Hay que realizar una mejor gestión de las vistas, me refiero a hacerlas visualmente atractivas.
