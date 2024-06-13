@@ -9,7 +9,7 @@ def del_new_file(uploaded_file, extracted_images):
             shutil.rmtree(str(uploaded_file))
             print(f'Se ha eliminado la carpeta y su contenido: {uploaded_file}')
         else:
-            print(f'La carpeta no existe: {uploaded_file}')
+            print(f'La carpeta no existe: {uploaded_file}, has_deleted: {True}')
         
         # Verificar y eliminar cada imagen extraída
         for image in extracted_images:

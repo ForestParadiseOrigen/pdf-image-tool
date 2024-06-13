@@ -26,9 +26,10 @@ def upload_view(request):
         
     return render(request, "upload_template.html", {"form": form})
 
-def deliver_files_view():
+@csrf_exempt
+def deliver_files_view(request):
     # Explicación: Por medio de esta sección se van a mostrar todos los archivos que están almacenados en la carpeta uploads.
-    return render("")
+    return render(request, "deliver_files.html")
 
 
 # Pendiente: Hay que realizar una mejor gestión de las vistas, me refiero a hacerlas visualmente atractivas.

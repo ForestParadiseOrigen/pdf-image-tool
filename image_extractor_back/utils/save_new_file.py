@@ -9,7 +9,7 @@ def save_new_file(request):
     
     # Guarda el archivo que viene dentro del requerimiento que trae el formulario.
     uploaded_file = request.FILES["file"]
-    
+    list
     # En caso de que exista un archivo dentro de la variable.
     if uploaded_file:
         
@@ -25,8 +25,7 @@ def save_new_file(request):
     else:
         print("error: No se encontró ningún archivo para guardar.")
     
-    
-    # Nota: Es bovio que el resultado del método sea null, ya que no hay nada que defina o ordene los resultados que se están almacenando el la variable.
+    # Nota: Es obvio que el resultado del método sea null, ya que no hay nada que defina o ordene los resultados que se están almacenando el la variable.
     clean_all = del_new_file(uploaded_file, extracted_images)
     extracted = {"file_url": uploaded_file_url, "extracted_images": extracted_images, "has_deleted": clean_all}
     

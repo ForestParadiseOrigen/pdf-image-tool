@@ -17,13 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# SECCION: Vistas externas:
-# Front
-
-# Back
-
-
+# Sección: Vistas externas de la aplicación.
 urlpatterns = [
-    path('backend/', include('image_extractor_back.routes.urls')),
-    path('frontend/', include('image_extractor_front.routes.urls'))
+    path('backend/',    include('image_extractor_back.routes.urls')),
+    path('frontend/',   include('image_extractor_front.routes.urls')),
+    path('delivery/',   include('image_extractor_front.routes.urls')),
 ]
